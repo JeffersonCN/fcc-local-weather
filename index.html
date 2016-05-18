@@ -3,11 +3,60 @@
     <head>
         <title>Current Local Weather App</title>
         <meta charset="UTF-8">
+        <link href="css/materialize.css" rel="stylesheet">
+        <link href="css/weather-icons.css" rel="stylesheet">
         <link href="css/style.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="cyan lighten-2">
+        <main>
+            <div class="row">
+                <div class="card blue-grey darken-4 col s12 m10 l8 offset-m1 offset-l2 z-depth-2">
+                    <span class="white-text" id="city">Loading...</span>
+                    <div class="divider blue lighten-3"></div>
+                    <div class="card-content white-text">
+                        <!-- Switch -->
+                    <div class="switch">
+                        <label>
+                        ºC
+                        <input type="checkbox">
+                        <span class="lever"></span>
+                        ºF
+                        </label>
+                    </div>
+                        <h4 class="flow-text center-align" id="icon-label"></h4>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h1 id="current-temp" class="temp col s6 m5 l4 offset-m1 offset-l2"></h1>
+                                <h1 class="temp col s6 m5 l4 left" id="icon"></h1>
+                            </div>
+                        </div>
+                        <div class="divider blue lighten-3"></div>
+                        <div class="row extra">
+                            <div class="blue-text text-lighten-4 col s12 m10 l8 offset-l2 offset-m1">
+                                <div class="col s4">
+                                    <i class="wi wi-humidity"></i>                                
+                                    <h6 class="extra-label">Humidity</h6>
+                                    <span class="extra-info" id="humidity"></span>
+                                </div>
+                                <div class="col s4">
+                                    <i class="wi wi-barometer"></i>
+                                    <h6 class="extra-label">Pressure</h6>    
+                                    <span class="extra-info" id="pressure"></span>                            
+                                </div>
+                                <div class="col s4">
+                                    <i class="wi wi-strong-wind"></i>                                
+                                    <h6 class="extra-label">Wind</h6>  
+                                    <span class="extra-info" id="wind"></span>                           
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>          
+        </main>
         
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript" src="js/materialize.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

@@ -10,19 +10,7 @@
 // INTEGRANDO ICONS: https://gist.github.com/tbranyen/62d974681dea8ee0caa1
 // ICONS: https://erikflowers.github.io/weather-icons/
     
-
-    var positioning = function () {
-        var cardSize = $(".card").height();
-        var h = $(window).height();
-        var pos = (h - cardSize) / 2;
-        
-        
-        $(".card").css({
-            position: "absolute",
-            top: pos + "px"
-        });
-    }
-
+    // Get user data by IP information using IP API
     var getUserData = function() {
         $.getJSON("http://ip-api.com/json", function(result){
             var location = {"lat": result.lat, "lon": result.lon};
@@ -30,16 +18,19 @@
         });
     } 
     
+    // Get weather data using OpenWeatherMap API
     var getWeatherData = function(location) {
         $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + encodeURI(location.lat) + "&lon=" + encodeURI(location.lon) + "&APPID=750982d2c7862523e6b6e869e7ae5489", function(result){
             loadWeather(result);
         });
     }
     
+    // Convert Kelvin to Celcius
     var kelvinToCelcius = function(k){
         return parseInt(k - 273.15);
     }
     
+    // WeatherIcons information to integrate with OpenWeatherMap API
     var weatherIcons = {
         
         "200": {
@@ -407,9 +398,9 @@
             "label": "hurricane",
             "icon": "cloudy-gusts"
         }
-        }
+    }
     
-    
+    // Integrates WeatherIcon with OpenWeatherMap API
     var getIconName = function(data) {
         var prefix = 'wi wi-';
         
@@ -436,6 +427,7 @@
         return icon;
     }
     
+    // Use the Weather data to fill the page
     var loadWeather = function (data) {
         /*
         CIDADE: name
@@ -451,6 +443,7 @@
         */
         // SHOW CURRENT TEMP
         $('#current-temp').text(kelvinToCelcius(data.main.temp) + "º");
+        $('.fa-spin').addClass("hide");
         // SHOW CITY NAME AND COUNTRY
         $('#city').text(data.name + ', ' + data.sys.country);
         // SHOW WEATHER ICON
@@ -462,15 +455,13 @@
         $('#pressure').text(parseInt(data.main.pressure) + ' hPa');
         // SHOW WIND
         $('#wind').text(parseInt(3.6 * data.wind.speed) + ' km/h');
-        positioning();
+        
     }
     
+    // Once document is ready...
     $(document).ready(function(){
+        // Call the function to get user data
         getUserData();
-    });
-    
-    $(window).on("resize", function(){
-        positioning();
     });
 
 

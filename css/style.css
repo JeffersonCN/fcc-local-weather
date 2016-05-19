@@ -1,3 +1,14 @@
+html {
+    height: 100%;
+}
+
+.full-height {
+    min-height: 99% !important;
+    height: 99%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 #city {
     font-weight: 600 !important;
     font-size: 3em !important;

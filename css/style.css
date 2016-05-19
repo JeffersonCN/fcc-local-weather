@@ -13,6 +13,7 @@ html {
     font-weight: 600 !important;
     font-size: 3em !important;
 }
+
 .temp {
     font-size: 9em;
     text-align: center;
@@ -20,7 +21,7 @@ html {
 
 .extra {
     text-align: center;
-    margin-top: 5%;
+    margin-top: 6%;
 }
 
 .extra .wi {
@@ -38,4 +39,9 @@ html {
 .extra-info {
     font-size: 20px;
     font-weight: 600 !important;
+}
+
+#made {
+    margin-top: 2%;
+    margin-bottom: 5px;
 }

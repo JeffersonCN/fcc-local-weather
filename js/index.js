@@ -29,6 +29,10 @@
     var kelvinToCelcius = function(k){
         return parseInt(k - 273.15);
     }
+    // Convert Kelvin to Fahrenheit
+    var kelvinToFahrenheit = function(k){
+        return parseInt((kelvinToCelcius(k) / 5)*9 + 32);
+    }
     
     // WeatherIcons information to integrate with OpenWeatherMap API
     var weatherIcons = {
@@ -427,6 +431,7 @@
         return icon;
     }
     
+    var kelvinTemp;
     // Use the Weather data to fill the page
     var loadWeather = function (data) {
         /*
@@ -442,7 +447,8 @@
             DIREÇÃO: wind.deg
         */
         // SHOW CURRENT TEMP
-        $('#current-temp').text(kelvinToCelcius(data.main.temp) + "º");
+        kelvinTemp = data.main.temp;
+        $('#current-temp').text(kelvinToCelcius(kelvinTemp) + "º");
         $('.fa-spin').addClass("hide");
         // SHOW CITY NAME AND COUNTRY
         $('#city').text(data.name + ', ' + data.sys.country);
@@ -456,6 +462,7 @@
         // SHOW WIND
         $('#wind').text(parseInt(3.6 * data.wind.speed) + ' km/h');
         
+        $('#made').toggleClass("hide");        
     }
     
     // Once document is ready...
@@ -464,4 +471,13 @@
         getUserData();
     });
 
-
+    $('#convert').on("click", function(){
+        var convert = $(this).prop('checked'),
+            temp;
+        if (convert) {
+            temp = kelvinToFahrenheit(kelvinTemp);
+        } else {
+            temp = kelvinToCelcius(kelvinTemp);
+        }
+        $('#current-temp').text(temp + "º");
+    });

@@ -8,8 +8,8 @@
 // WEATHERICONS INTEGRATION: https://gist.github.com/tbranyen/62d974681dea8ee0caa1
 
 // Get user data by IP information using IP API
-var getUserData = function () {
-    $.getJSON("http://ip-api.com/json", function (result) {
+var getUserData = function() {
+    $.getJSON("http://ip-api.com/json", function(result) {
         var location = {
             "lat": result.lat,
             "lon": result.lon
@@ -19,18 +19,18 @@ var getUserData = function () {
 }
 
 // Get weather data using OpenWeatherMap API
-var getWeatherData = function (location) {
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + encodeURI(location.lat) + "&lon=" + encodeURI(location.lon) + "&APPID=750982d2c7862523e6b6e869e7ae5489", function (result) {
+var getWeatherData = function(location) {
+    $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + encodeURI(location.lat) + "&lon=" + encodeURI(location.lon) + "&APPID=750982d2c7862523e6b6e869e7ae5489", function(result) {
         loadWeather(result);
     });
 }
 
 // Convert Kelvin to Celcius
-var kelvinToCelcius = function (k) {
-    return parseInt(k - 273.15);
-}
-// Convert Kelvin to Fahrenheit
-var kelvinToFahrenheit = function (k) {
+var kelvinToCelcius = function(k) {
+        return parseInt(k - 273.15);
+    }
+    // Convert Kelvin to Fahrenheit
+var kelvinToFahrenheit = function(k) {
     return parseInt((kelvinToCelcius(k) / 5) * 9 + 32);
 }
 
@@ -405,7 +405,7 @@ var weatherIcons = {
 }
 
 // Integrates WeatherIcon with OpenWeatherMap API
-var getIconName = function (data) {
+var getIconName = function(data) {
     var prefix = 'wi wi-';
 
     var today = new Date();
@@ -433,7 +433,7 @@ var getIconName = function (data) {
 
 var kelvinTemp;
 // Use the Weather data to fill the page
-var loadWeather = function (data) {
+var loadWeather = function(data) {
     /*
     CIDADE: name
     TEMPERATURA:
@@ -466,12 +466,12 @@ var loadWeather = function (data) {
 }
 
 // Once document is ready...
-$(document).ready(function () {
+$(document).ready(function() {
     // Call the function to get user data
     getUserData();
 });
 
-$('#convert').on("click", function () {
+$('#convert').on("click", function() {
     var convert = $(this).prop('checked'),
         temp;
     if (convert) {

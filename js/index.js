@@ -36,7 +36,6 @@ var kelvinToFahrenheit = function(k) {
 
 // WeatherIcons information to integrate with OpenWeatherMap API
 var weatherIcons = {
-
     "200": {
         "label": "thunderstorm with light rain",
         "icon": "storm-showers"
@@ -432,6 +431,7 @@ var getIconName = function(data) {
 }
 
 var kelvinTemp;
+
 // Use the Weather data to fill the page
 var loadWeather = function(data) {
     /*
